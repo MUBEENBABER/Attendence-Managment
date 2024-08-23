@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/b7e721a596.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="box">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Service</a></li>
+                <li><a href="#">About</a></li>
+                <li><a id="logout-link" href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="dash-box">
+        <div class="profil-box">
+            <div class="title"><h1>Student Attendance</h1></div>
+            <div class="img-pol" id="profile-section">
+                <h1><i class="fa-solid fa-user"></i></h1>
+                <h2>Change Profile</h2>
+                <input type="file" id="profile-picture" accept="image/*">
+                <button class="img-uplod" id="upload-picture">Upload Picture</button>
+                <button class="img-uplod" id="delete-picture">Delete Picture</button>
+            </div>
+        </div>
+
+        <div id="attendance-section">
+            <button id="mark-attendance">Mark Attendance</button>
+            <button id="request-leave">Mark Leave</button>
+            <button id="view-attendance">View Attendance</button>
+        </div>
+
+        <!-- View Attendance Section -->
+        <div id="view-attendance-section" style="display: none;">
+            <h2>Your Attendance</h2>
+            <ul id="attendance-list"></ul>
+            <button id="back">Back</button>
+        </div>
+
+        <!-- Leave Request Section -->
+        <div id="leave-section" style="display: none;">
+            <h2>Request Leave</h2>
+            <textarea id="leave-reason" placeholder="Reason for leave" required></textarea>
+            <button id="send-leave-request">Send Request</button>
+            <button id="back-from-leave">Back</button>
+        </div>
+    </div>
+
+    <script>
+        
+        // Check if the user is logged in
+
+        const loggedIn = localStorage.getItem('loggedIn');
+        if (!loggedIn) {
+            window.location.href = 'login.html'; 
+            // Redirect to login page if not logged in
+        }
+
+        // Load attendance and leave data from localStorage
+
+        let attendanceData = JSON.parse(localStorage.getItem('attendanceData')) || [];
+        let leaveRequests = JSON.parse(localStorage.getItem('leaveRequests')) || [];
+
+        // Mark Attendance
+
+        document.getElementById('mark-attendance').addEventListener('click', function() {
+            const today = new Date().toLocaleDateString();
+            if (!attendanceData.includes(today)) {
+                attendanceData.push(today);
+                localStorage.setItem('attendanceData', JSON.stringify(attendanceData));
+                alert('Attendance marked for today.');
+            } else {
+                alert('You have already marked your attendance today.');
+            }
+        });
+
+        // View Attendance
+
+        document.getElementById('view-attendance').addEventListener('click', function() {
+            document.getElementById('attendance-section').style.display = 'none';
+            document.getElementById('view-attendance-section').style.display = 'block';
+
+            const attendanceList = document.getElementById('attendance-list');
+            attendanceList.innerHTML = '';
+            attendanceData.forEach((date, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${index + 1}. ${date}`;
+                attendanceList.appendChild(li);
+            });
+        });
+
+        // Back from Attendance View
+
+        document.getElementById('back').addEventListener('click', function() {
+            document.getElementById('attendance-section').style.display = 'block';
+            document.getElementById('view-attendance-section').style.display = 'none';
+        });
+
+        // Leave Request
+
+        document.getElementById('request-leave').addEventListener('click', function() {
+            document.getElementById('attendance-section').style.display = 'none';
+            document.getElementById('leave-section').style.display = 'block';
+        });
+
+        // Send Leave Request
+
+        document.getElementById('send-leave-request').addEventListener('click', function() {
+            const reason = document.getElementById('leave-reason').value;
+            if (reason) {
+                leaveRequests.push({
+                    date: new Date().toLocaleDateString(),
+                    reason: reason
+                });
+                localStorage.setItem('leaveRequests', JSON.stringify(leaveRequests));
+                alert('Leave request sent.');
+                document.getElementById('leave-reason').value = '';
+                document.getElementById('leave-section').style.display = 'none';
+                document.getElementById('attendance-section').style.display = 'block';
+            } else {
+                alert('Please enter a reason for leave.');
+            }
+        });
+
+        // Back from Leave Section
+
+        document.getElementById('back-from-leave').addEventListener('click', function() {
+            document.getElementById('leave-section').style.display = 'none';
+            document.getElementById('attendance-section').style.display = 'block';
+        });
+
+        // Upload Profile Picture
+
+        document.getElementById('upload-picture').addEventListener('click', function() {
+            const fileInput = document.getElementById('profile-picture');
+            if (fileInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    let profileImage = document.getElementById('uploaded-picture');
+                    if (!profileImage) {
+                        profileImage = document.createElement('img');
+                        profileImage.id = 'uploaded-picture';
+                        document.getElementById('profile-section').appendChild(profileImage);
+                    }
+                    profileImage.src = e.target.result;
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+                alert('Profile picture uploaded.');
+            } else {
+                alert('Please select a picture to upload.');
+            }
+        });
+
+        // Delete Profile Picture
+        document.getElementById('delete-picture').addEventListener('click', function() {
+            const profileImage = document.getElementById('uploaded-picture');
+            if (profileImage) {
+                profileImage.remove();
+                alert('Profile picture deleted.');
+            } else {
+                alert('No profile picture to delete.');
+            }
+        });
+
+        // Logout
+        document.getElementById('logout-link').addEventListener('click', function() {
+            localStorage.removeItem('loggedIn');
+            window.location.href = 'login.html'; 
+        });
+    </script>
+</body>
+</html>

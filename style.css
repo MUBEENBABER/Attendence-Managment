@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("image/signup.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+    width: 40%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.box img {
+    width: 10vw;
+    margin-left: 30%;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input-group h2 {
+    color: white;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    
+  
+    margin-bottom: 15px;
+}
+
+.input-field input {
+    flex: 1;
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    margin-left: 10px;
+    background: transparent;
+    border: 2px solid gold;
+    color: white;
+    font-size: 16px;
+    padding: 8px 10px;
+}
+
+.input-field i {
+    color: white;
+}
+
+form button {
+    background-color: #03045e;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background 0.3s ease;
+    width: 50%;
+    margin-left: 29%;
+}
+
+form button:hover {
+    background-color: #021c40;
+}
+
+p {
+    margin-top: 20px;
+    color: white;
+    text-align: center;
+}
+
+p a {
+    color: gold;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
+/* log in css */
+.box-log{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+    width: 35%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: white;
+    /* height: 70vh; */
+   
+
+
+}
+.box-log img{
+    width: 8vw;
+margin-left: 33%;
+}
+.box-log h1{
+    margin-left: 35%;
+    padding: 10px;
+    margin-bottom: 5px;
+   
+}
+
+    
+    
+   
+    
+   

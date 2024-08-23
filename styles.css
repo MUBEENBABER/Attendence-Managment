@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("https://img.freepik.com/free-photo/psychedelic-paper-shapes-with-copy-space_23-2149378246.jpg?t=st=1723905316~exp=1723908916~hmac=5fccd45a9f05a1f9569c162249643cfde9b138abff8500b17332e1f7e3f8118a&w=826");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+}
+
+.box ul {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+}
+
+.box li {
+    margin-right: 15px;
+}
+
+.box li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.box li a:hover {
+    background-color: #ffb703;
+}
+
+.dash-box {
+    width: 100%;
+    /* Adjust according to the header height */
+    height: calc(100vh - 50px); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+}
+
+.profil-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.profil-box .title {
+    background-color: #03045e;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 15px black;
+}
+
+.profil-box h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.profil-box h2 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+#profile-picture {
+    display: block;
+    margin: 0 auto 15px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #03071e;
+}
+
+.img-uplod {
+    background-color: #03045e;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+.img-uplod:hover {
+    background-color: #023e8a;
+}
+
+#attendance-section button,
+#view-attendance-section button,
+#leave-section button {
+    background-color: #03045e;
+    color: white;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background 0.3s ease;
+    width: 200px;
+}
+
+#attendance-section button:hover,
+#view-attendance-section button:hover,
+#leave-section button:hover {
+    background-color: #023e8a;
+}
+
+#view-attendance-section, #leave-section {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#attendance-list {
+    list-style: none;
+    padding: 0;
+}
+
+#attendance-list li {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+textarea {
+    width: 80%;
+    height: 100px;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    font-size: 1em;
+    resize: none;
+}
+
+#profile-section img {
+    margin-top: 20px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
